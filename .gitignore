@@ -79,3 +79,9 @@ __recovery/
 
 # Boss dependency manager vendor folder https://github.com/HashLoad/boss
 modules/
+
+# JetInfero
+!bin/JetInfero.dll
+bin/config.ini
+zip_latest_commit.cmd
+*.dsv
