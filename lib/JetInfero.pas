@@ -254,7 +254,6 @@ const
   ///   processing complex computations, or handling specialized queries.
   ///   The tool role facilitates extensibility and ensures the LLM can integrate seamlessly with other systems.
   /// </remarks>
-
   jiROLE_TOOL      = 'tool';
 
 type

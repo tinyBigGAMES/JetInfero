@@ -692,6 +692,7 @@ begin
   end;
 end;
 
+
 function TJetInfero.CalcPerformance(const AContext: Pllama_context): PerformanceResult;
 var
   LTotalTimeSec: Double;
@@ -1385,7 +1386,6 @@ begin
 
     LBatch := llama_batch_get_one(@LNewTokenId, 1);
   end;
-  OnInferenceEnd();
 
   if FTokenResponse.Finalize then
   begin
@@ -1406,6 +1406,8 @@ begin
       end;
     end;
   end;
+
+  OnInferenceEnd();
 
   FInference.Perf := CalcPerformance(LCtx);
 

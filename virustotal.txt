@@ -1,5 +1,5 @@
 VirtusTotal report for JetInfero Project
 ========================================
 
-JetInfero.CLibs.res - https://www.virustotal.com/gui/file/326784ab03876565d314bcb937218b11feb004e9718ee44495441ea664f0e931
-JetInfero.dll       - https://www.virustotal.com/gui/file/e4555362fcc2c9a7a4b7f3a55ba564515fd6cef271c2d2c93cdd80eb2a994fd8
+JetInfero.CLibs.res - https://www.virustotal.com/gui/file/f85417b352e92459276b819d7df97f79fcc233a0be19ba7ea87fcc9143331507
+JetInfero.dll       - https://www.virustotal.com/gui/file/d8f5771070eed0fa7fa3af55a5e886ba0efbd13bcbcf4d1d187e40acac13bdd8

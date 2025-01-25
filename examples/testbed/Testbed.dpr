@@ -25,10 +25,5 @@ uses
   UTestbed in 'UTestbed.pas';
 
 begin
-  try
-    RunTests();
-  except
-    on E: Exception do
-      Writeln(E.ClassName, ': ', E.Message);
-  end;
+  RunTests();
 end.

@@ -47,15 +47,32 @@ For example:
 
 ```pascal
   jiDefineModel(
-    'C:/LLM/GGUF/gemma-2-2b-it-abliterated-Q8_0.gguf',
-    'gemma-2-2b-it-abliterated-Q8_0',
-    '<start_of_turn>{role}\n{content}<end_of_turn>',
-    '',
-    False,
-    8192,
-    -1,
-    -1,
-     4
+    // Model Filename
+    'C:/LLM/GGUF/hermes-3-llama-3.2-3b-abliterated-q8_0.gguf', 
+    
+    // Model Refname
+    'hermes-3-llama-3.2-3b-abliterated-q8_0',                  
+    
+     // Model Template
+    '<|im_start|>system\n{content}<|im_end|>',                
+    
+     // Model Template End
+    '<|im_start|>assistant\n',                                
+    
+    // Capitalize Role
+    False,                                                     
+    
+    // Max Context
+    8192,                                                      
+    
+    // Main GPU, -1 for best, 0..N GPU number
+    -1,                                                        
+    
+    // GPU Layers, -1 for max, 0 for CPU only, 1..N for layer
+    -1,                                                        
+    
+    // Max threads, default 4, max will be physical CPU count     
+     4                                                         
   );
 ```
 
@@ -90,7 +107,8 @@ For example:
    Ensure `JetInfero.dll` is accessible in your project directory.
 
 2. **Acquire a GGUF Model** 🧠
-   - Obtain a model from [Hugging Face](https://huggingface.co), such as [Gemma 2.2B GGUF (Q8_0)](https://huggingface.co/bartowski/gemma-2-2b-it-abliterated-GGUF/resolve/main/gemma-2-2b-it-abliterated-Q8_0.gguf?download=true). Save it to a directory accessible to your application (e.g., `C:/LLM/GGUF`) 💾.
+   - Obtain a model from [Hugging Face](https://huggingface.co), such as [
+Hermes-3-Llama-3.2-3B-Q8_0-GGUF](https://huggingface.co/tinybiggames/Hermes-3-Llama-3.2-3B-Q8_0-GGUF/resolve/main/hermes-3-llama-3.2-3b-q8_0.gguf?download=true). Save it to a directory accessible to your application (e.g., `C:/LLM/GGUF`) 💾.
 
 2. **Add JetInfero to Your Project** 🔨
    - Include the `JetInfero` unit in your Delphi project.   
@@ -123,11 +141,13 @@ var
 begin
   if jiInit() then
   begin
-    jiDefineModel('C:/LLM/GGUF/gemma-2-2b-it-abliterated-Q8_0.gguf',
-      'gemma-2-2b-it-abliterated-Q8_0', 
-      '<start_of_turn>{role}\n{content}<end_of_turn>',
-      '', False, 8192, -1, -1, 4 );
-    jiLoadModel('gemma-2-2b-it-abliterated-Q8_0');
+    jiDefineModel(
+      'C:/LLM/GGUF/hermes-3-llama-3.2-3b-abliterated-q8_0.gguf',
+      'hermes-3-llama-3.2-3b-abliterated-q8_0',
+      '<|im_start|>system\n{content}<|im_end|>',
+      '<|im_start|>assistant\n', False, 8192, -1, -1, 4);
+    
+    jiLoadModel('hermes-3-llama-3.2-3b-abliterated-q8_0');
 
     jiAddMessage('user', 'What is AI?');
 
@@ -204,6 +224,7 @@ Your contributions make a difference! 🙌✨
 
 **JetInfero** is distributed under the 🆓 **BSD-3-Clause License**, allowing for redistribution and use in both source and binary forms, with or without modification, under specific conditions. See the [LICENSE](https://github.com/tinyBigGAMES/JetInfero?tab=BSD-3-Clause-1-ov-file#BSD-3-Clause-1-ov-file) file for more details.
 
+---
 **Elevate your Delphi projects with JetInfero 🚀 – your bridge to seamless local generative AI integration 🤖.**  
 
 <p align="center">
