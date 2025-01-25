@@ -209,8 +209,8 @@ begin
   jiClearModelDefines();
 
   jiDefineModel(
-    'C:/LLM/GGUF/hermes-3-llama-3.2-3b-abliterated-q8_0.gguf',                   // Model Filename
-    'hermes-3-llama-3.2-3b-abliterated-q8_0',                                    // Model Refname
+    'C:/LLM/GGUF/hermes-3-llama-3.2-3b-q8_0.gguf',                               // Model Filename
+    'hermes-3-llama-3.2-3b-q8_0',                                                // Model Refname
     '<|im_start|>{role}\n{content}<|im_end|>',                                   // Model Template
     '<|im_start|>assistant\n',                                                   // Model Template End
     False,                                                                       // Capitalize Role
@@ -236,7 +236,7 @@ begin
   jiAddMessage(jiROLE_SYSTEM, 'You are a helpful AI assistant');
   jiAddMessage(jiROLE_USER, 'What is AI');
 
-  LModelRef := 'hermes-3-llama-3.2-3b-abliterated-q8_0';
+  LModelRef := 'hermes-3-llama-3.2-3b-q8_0';
 
   if jiRunInference(PWideChar(LModelRef)) then
     begin
@@ -301,7 +301,7 @@ begin
   jiAddMessage(jiROLE_ASSISTANT, CToolCall);
   jiAddMessage(jiROLE_TOOL, CToolResponse);
 
-  LModelRef := 'hermes-3-llama-3.2-3b-abliterated-q8_0';
+  LModelRef := 'hermes-3-llama-3.2-3b-q8_0';
 
   if jiRunInference(PWideChar(LModelRef)) then
     begin
@@ -341,7 +341,7 @@ begin
   jiAddMessage(jiROLE_SYSTEM, CContemplatorPrompt);
   jiAddMessage(jiROLE_USER, CQuestion);
 
-  LModelRef := 'hermes-3-llama-3.2-3b-abliterated-q8_0';
+  LModelRef := 'hermes-3-llama-3.2-3b-q8_0';
 
   if jiRunInference(PWideChar(LModelRef)) then
     begin
@@ -381,7 +381,7 @@ begin
       WriteLn('JetInfero v', jiGetVersion());
       WriteLn;
 
-      LExample := exBasicInference;
+      LExample := exFunctionCalling;
 
       case LExample of
         exBasicInference : BasicInference();
