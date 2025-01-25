@@ -54,7 +54,7 @@ For example:
     'hermes-3-llama-3.2-3b-abliterated-q8_0',                  
     
      // Model Template
-    '<|im_start|>system\n{content}<|im_end|>',                
+    '<|im_start|>{role}\n{content}<|im_end|>',                
     
      // Model Template End
     '<|im_start|>assistant\n',                                
@@ -144,7 +144,7 @@ begin
     jiDefineModel(
       'C:/LLM/GGUF/hermes-3-llama-3.2-3b-abliterated-q8_0.gguf',
       'hermes-3-llama-3.2-3b-abliterated-q8_0',
-      '<|im_start|>system\n{content}<|im_end|>',
+      '<|im_start|>{role}\n{content}<|im_end|>',
       '<|im_start|>assistant\n', False, 8192, -1, -1, 4);
     
     jiLoadModel('hermes-3-llama-3.2-3b-abliterated-q8_0');
