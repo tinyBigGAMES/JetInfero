@@ -1,8 +1,8 @@
 {
     "Models": [
         {
-            "Filename": "C:/LLM/GGUF/hermes-3-llama-3.2-3b-abliterated-q8_0.gguf",
-            "RefName": "hermes-3-llama-3.2-3b-abliterated-q8_0",
+            "Filename": "C:/LLM/GGUF/hermes-3-llama-3.2-3b-q8_0.gguf",
+            "RefName": "hermes-3-llama-3.2-3b-q8_0",
             "MaxContext": 8192,
             "MaxThreads": 4,
             "MainGPU": -1,

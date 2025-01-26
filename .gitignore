@@ -85,3 +85,4 @@ modules/
 bin/config.ini
 zip_latest_commit.cmd
 *.dsv
+bin/search_results.txt

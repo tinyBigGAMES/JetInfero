@@ -48,10 +48,10 @@ For example:
 ```pascal
   jiDefineModel(
     // Model Filename
-    'C:/LLM/GGUF/hermes-3-llama-3.2-3b-abliterated-q8_0.gguf', 
+    'C:/LLM/GGUF/hermes-3-llama-3.2-3b-q8_0.gguf', 
     
     // Model Refname
-    'hermes-3-llama-3.2-3b-abliterated-q8_0',                  
+    'hermes-3-llama-3.2-3b-q8_0',                  
     
      // Model Template
     '<|im_start|>{role}\n{content}<|im_end|>',                
@@ -142,12 +142,12 @@ begin
   if jiInit() then
   begin
     jiDefineModel(
-      'C:/LLM/GGUF/hermes-3-llama-3.2-3b-abliterated-q8_0.gguf',
-      'hermes-3-llama-3.2-3b-abliterated-q8_0',
+      'C:/LLM/GGUF/hermes-3-llama-3.2-3b-q8_0.gguf',
+      'hermes-3-llama-3.2-3b-q8_0',
       '<|im_start|>{role}\n{content}<|im_end|>',
       '<|im_start|>assistant\n', False, 8192, -1, -1, 4);
     
-    jiLoadModel('hermes-3-llama-3.2-3b-abliterated-q8_0');
+    jiLoadModel('hermes-3-llama-3.2-3b-q8_0');
 
     jiAddMessage('user', 'What is AI?');
 

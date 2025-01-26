@@ -1344,22 +1344,12 @@ begin
 
     LNewTokenId := llama_sampler_sample(LSmplr, LCtx, -1);
 
-    (*
-    if llama_token_is_eog(LVocab, LNewTokenId) then
-    begin
-      break;
-    end;
-    *)
-
     if llama_vocab_is_eog(LVocab, LNewTokenId) then
     begin
       break;
     end;
 
-
     LTokenStr := TokenToPiece(LVocab, LCtx, LNewTokenId, false);
-
-    //LTokenStr := SanitizeFromJson(LTokenStr);
 
     if LFirstToken then
     begin
