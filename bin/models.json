@@ -1,13 +1,13 @@
 {
     "Models": [
         {
-            "Filename": "C:/LLM/GGUF/hermes-3-llama-3.2-3b-q8_0.gguf",
-            "RefName": "hermes-3-llama-3.2-3b-q8_0",
+            "Filename": "C:/LLM/GGUF/Dolphin3.0-Llama3.2-3B-Q8_0.gguf",
+            "RefName": "Dolphin3.0-Llama3.2-3B-Q8_0",
             "MaxContext": 8192,
             "MaxThreads": 4,
             "MainGPU": -1,
             "GPULayers": -1,
-            "Template": "<|im_start|>{role}\\n{content}<|im_end|>",
+            "Template": "<|im_start|>{role}\\n{content}<|im_end|>\\n",
             "TemplateEnd": "<|im_start|>assistant\\n"
         }
     ]

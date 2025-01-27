@@ -48,13 +48,13 @@ For example:
 ```pascal
   jiDefineModel(
     // Model Filename
-    'C:/LLM/GGUF/hermes-3-llama-3.2-3b-q8_0.gguf', 
+    'C:/LLM/GGUF/Dolphin3.0-Llama3.2-3B-Q8_0.gguf', 
     
     // Model Refname
-    'hermes-3-llama-3.2-3b-q8_0',                  
+    'Dolphin3.0-Llama3.2-3B-Q8_0',                  
     
      // Model Template
-    '<|im_start|>{role}\n{content}<|im_end|>',                
+    '<|im_start|>{role}\n{content}<|im_end|>\n',                
     
      // Model Template End
     '<|im_start|>assistant\n',                                
@@ -108,7 +108,7 @@ For example:
 
 2. **Acquire a GGUF Model** 🧠
    - Obtain a model from [Hugging Face](https://huggingface.co), such as [
-Hermes-3-Llama-3.2-3B-Q8_0-GGUF](https://huggingface.co/tinybiggames/Hermes-3-Llama-3.2-3B-Q8_0-GGUF/resolve/main/hermes-3-llama-3.2-3b-q8_0.gguf?download=true). Save it to a directory accessible to your application (e.g., `C:/LLM/GGUF`) 💾.
+Dolphin3.0-Llama3.2-3B-Q8_0-GGUF](https://huggingface.co/tinybiggames/Dolphin3.0-Llama3.2-3B-Q8_0-GGUF/resolve/main/dolphin3.0-llama3.2-3b-q8_0.gguf?download=true). Save it to a directory accessible to your application (e.g., `C:/LLM/GGUF`) 💾.
 
 2. **Add JetInfero to Your Project** 🔨
    - Include the `JetInfero` unit in your Delphi project.   
@@ -142,12 +142,12 @@ begin
   if jiInit() then
   begin
     jiDefineModel(
-      'C:/LLM/GGUF/hermes-3-llama-3.2-3b-q8_0.gguf',
-      'hermes-3-llama-3.2-3b-q8_0',
-      '<|im_start|>{role}\n{content}<|im_end|>',
+      'C:/LLM/GGUF/Dolphin3.0-Llama3.2-3B-Q8_0.gguf',
+      'Dolphin3.0-Llama3.2-3B-Q8_0',
+      '<|im_start|>{role}\n{content}<|im_end|>\n',
       '<|im_start|>assistant\n', False, 8192, -1, -1, 4);
     
-    jiLoadModel('hermes-3-llama-3.2-3b-q8_0');
+    jiLoadModel('Dolphin3.0-Llama3.2-3B-Q8_0');
 
     jiAddMessage('user', 'What is AI?');
 
