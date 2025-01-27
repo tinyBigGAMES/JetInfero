@@ -48,16 +48,16 @@ For example:
 ```pascal
   jiDefineModel(
     // Model Filename
-    'C:/LLM/GGUF/Dolphin3.0-Llama3.2-3B-Q8_0.gguf', 
+    'C:/LLM/GGUFDolphin3.0-Llama3.1-8B-Q4_K_M.gguf', 
     
     // Model Refname
-    'Dolphin3.0-Llama3.2-3B-Q8_0',                  
+    'Dolphin3.0-Llama3.1-8B-Q4_K_M.gguf',                  
     
      // Model Template
-    '<|im_start|>{role}\n{content}<|im_end|>\n',                
+    '<|im_start|>{role}\n{content}<|im_end|>',                
     
      // Model Template End
-    '<|im_start|>assistant\n',                                
+    '<|im_start|>assistant',                                
     
     // Capitalize Role
     False,                                                     
@@ -108,7 +108,8 @@ For example:
 
 2. **Acquire a GGUF Model** 🧠
    - Obtain a model from [Hugging Face](https://huggingface.co), such as [
-Dolphin3.0-Llama3.2-3B-Q8_0-GGUF](https://huggingface.co/tinybiggames/Dolphin3.0-Llama3.2-3B-Q8_0-GGUF/resolve/main/dolphin3.0-llama3.2-3b-q8_0.gguf?download=true). Save it to a directory accessible to your application (e.g., `C:/LLM/GGUF`) 💾.
+Dolphin3.0-Llama3.1-8B-Q4_K_M-GGUF](https://huggingface.co/tinybiggames/Dolphin3.0-Llama3.1-8B-Q4_K_M-GGUF/resolve/main/dolphin3.0-llama3.1-8b-q4_k_m.gguf?download=true), a good general purpose model. You can download directly from our Hugging Face account. See the [model card](https://huggingface.co/tinybiggames/Dolphin3.0-Llama3.1-8B-Q4_K_M-GGUF) for more information.   
+   - Save it to a directory accessible to your application (e.g., `C:/LLM/GGUF`) 💾.
 
 2. **Add JetInfero to Your Project** 🔨
    - Include the `JetInfero` unit in your Delphi project.   
@@ -142,12 +143,12 @@ begin
   if jiInit() then
   begin
     jiDefineModel(
-      'C:/LLM/GGUF/Dolphin3.0-Llama3.2-3B-Q8_0.gguf',
-      'Dolphin3.0-Llama3.2-3B-Q8_0',
-      '<|im_start|>{role}\n{content}<|im_end|>\n',
-      '<|im_start|>assistant\n', False, 8192, -1, -1, 4);
+      'C:/LLM/GGUF/Dolphin3.0-Llama3.1-8B-Q4_K_M.gguf',
+      'Dolphin3.0-Llama3.1-8B-Q4_K_M.gguf',
+      '<|im_start|>{role}\n{content}<|im_end|>',
+      '<|im_start|>assistant', False, 8192, -1, -1, 4);
     
-    jiLoadModel('Dolphin3.0-Llama3.2-3B-Q8_0');
+    jiLoadModel('Dolphin3.0-Llama3.1-8B-Q4_K_M.gguf');
 
     jiAddMessage('user', 'What is AI?');
 

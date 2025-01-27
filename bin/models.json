@@ -1,14 +1,14 @@
 {
     "Models": [
         {
-            "Filename": "C:/LLM/GGUF/Dolphin3.0-Llama3.2-3B-Q8_0.gguf",
-            "RefName": "Dolphin3.0-Llama3.2-3B-Q8_0",
+            "Filename": "C:/LLM/GGUF/Dolphin3.0-Llama3.1-8B-Q4_K_M.gguf",
+            "RefName": "Dolphin3.0-Llama3.1-8B-Q4_K_M",
             "MaxContext": 8192,
             "MaxThreads": 4,
             "MainGPU": -1,
             "GPULayers": -1,
-            "Template": "<|im_start|>{role}\\n{content}<|im_end|>\\n",
-            "TemplateEnd": "<|im_start|>assistant\\n"
+            "Template": "<|im_start|>{role}\\n{content}<|im_end|>",
+            "TemplateEnd": "<|im_start|>assistant"
         }
     ]
 }

@@ -125,10 +125,10 @@ begin
   jiClearModelDefines();
 
   jiDefineModel(
-    'C:/LLM/GGUF/Dolphin3.0-Llama3.2-3B-Q8_0.gguf',                              // Model Filename
-    'Dolphin3.0-Llama3.2-3B-Q8_0',                                               // Model Refname
-    '<|im_start|>{role}\n{content}<|im_end|>\n',                                 // Model Template
-    '<|im_start|>assistant\n',                                                   // Model Template End
+    'C:/LLM/GGUF/Dolphin3.0-Llama3.1-8B-Q4_K_M.gguf',                            // Model Filename
+    'Dolphin3.0-Llama3.1-8B-Q4_K_M',                                             // Model Refname
+    '<|im_start|>{role}\n{content}<|im_end|>',                                   // Model Template
+    '<|im_start|>assistant',                                                     // Model Template End
     False,                                                                       // Capitalize Role
     8192,                                                                        // Max Context to use, will clip between 512 and model's max context
     -1,                                                                          // Main GPU, -1 for best, 0..N GPU number
@@ -152,7 +152,7 @@ begin
   jiAddMessage(jiROLE_SYSTEM, 'You are a helpful AI assistant');
   jiAddMessage(jiROLE_USER, 'What is AI');
 
-  LModelRef := 'Dolphin3.0-Llama3.2-3B-Q8_0';
+  LModelRef := 'Dolphin3.0-Llama3.1-8B-Q4_K_M';
 
   if jiRunInference(PWideChar(LModelRef)) then
     begin
@@ -210,10 +210,14 @@ begin
 
   jiAddMessage(jiROLE_SYSTEM, CSystem);
   jiAddMessage(jiROLE_USER, CQuestion);
+
+  // if comment out the next two lines, it will return the <tool_call> data
+  // that you can then parse out <tool_call></tool_call> for the actual
+  // function call.
   jiAddMessage(jiROLE_ASSISTANT, CToolCall);
   jiAddMessage(jiROLE_TOOL, CToolResponse);
 
-  LModelRef := 'Dolphin3.0-Llama3.2-3B-Q8_0';
+  LModelRef := 'Dolphin3.0-Llama3.1-8B-Q4_K_M';
 
   if jiRunInference(PWideChar(LModelRef)) then
     begin
@@ -232,8 +236,11 @@ begin
     end;
 end;
 
-procedure Contemplation();
+procedure Reason();
 const
+
+  // This prompt will force to model into a chain-of-thought reasoning mode
+  // and it will procedure better results overall.
   CReasoningPrompt =
   '''
   You are an advanced reasoning assistant tasked with solving complex dilemmas in a manner that mirrors human thought processes, including introspection, chain-of-thought reasoning, and moral deliberation. To approach this task effectively:
@@ -251,13 +258,14 @@ const
   Your Response: Analyze the scenario using chain-of-thought reasoning, considering every possible action and consequence, before deciding whether to pull the lever and justifying your decision.
   ''';
 
-  CQuestion =
+  CQuestion1 =
   '''
   if there was a train on a track and there was a person about to be run over,
   if you stop you save the person but the train blows up and kills 1000s but if
   you run over the person the train will not kill 1000s of other people, which
   one do you do
   ''';
+
 var
   LTokensPerSec: Double;
   LTotalInputTokens: Int32;
@@ -268,9 +276,9 @@ begin
   Setup();
 
   jiAddMessage(jiROLE_SYSTEM, CReasoningPrompt);
-  jiAddMessage(jiROLE_USER, CQuestion);
+  jiAddMessage(jiROLE_USER, CQuestion1);
 
-  LModelRef := 'Dolphin3.0-Llama3.2-3B-Q8_0';
+  LModelRef := 'Dolphin3.0-Llama3.1-8B-Q4_K_M';
 
   if jiRunInference(PWideChar(LModelRef)) then
     begin
@@ -295,7 +303,7 @@ type
   TExample = (
     exBasicInference,
     exFunctionCalling,
-    exContemplation
+    exReason
   );
 var
   LExample: TExample;
@@ -311,12 +319,12 @@ begin
       WriteLn('JetInfero v', jiGetVersion());
       WriteLn;
 
-      LExample := exBasicInference;
+      LExample := exReason;
 
       case LExample of
         exBasicInference : BasicInference();
         exFunctionCalling: FunctionCalling();
-        exContemplation  : Contemplation();
+        exReason         : Reason();
       end;
 
     finally
