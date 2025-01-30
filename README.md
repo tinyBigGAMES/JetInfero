@@ -125,6 +125,8 @@ Dolphin3.0-Llama3.1-8B-Q4_K_M-GGUF](https://huggingface.co/tinybiggames/Dolphin3
    - JetInfero can be used with any programming language that supports Win64 and Unicode bindings 💻.  
    - Ensure the `JetInfero.dll` is included in your distribution and accessible at runtime 📦.  
 
+**Note: JetInfero requires direct access to the GPU/CPU and is not recommended for use inside a virtual machine.**
+
 ## 📈 Quick Start
 
 ### ⚙️ Basic Setup
@@ -181,7 +183,7 @@ begin
   Write(Token);
 end;
 
-jiSetTokenCallback(@InferenceCallback, nil);
+jiSetInferenceTokenCallback(@InferenceCallback, nil);
 ```
 
 ### 📊 Retrieve Performance Metrics
